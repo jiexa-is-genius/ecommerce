@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use gpacks\libs\ui;
+use gpacks\libs\alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/test-pack', function () {
     
-    $alert = alert::message('My first alert');
+    $alert = alert::message('My first alert')->send();
     
     dd($alert);
 
