@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ccbd816a07b206f971042295b899d1ba",
+    "content-hash": "8b9e01c6dc6d13e7ed2d88c8ab2e254f",
     "packages": [
         {
             "name": "brick/math",
@@ -503,6 +503,33 @@
                 }
             ],
             "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "gpacks/ui",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "packages/gpacks/ui",
+                "reference": "62d9168366e0f920e8eac8b48fec61f661bbb089"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gpacks\\Ui\\": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey"
+                }
+            ],
+            "description": "Global functions pack",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "graham-campbell/result-type",

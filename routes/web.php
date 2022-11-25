@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use gpacks\libs\ui;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test-pack', function () {
+    
+    $pack = ui::t('My first lib');
+    
+    dd($pack);
+
 });
