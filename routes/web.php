@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 Route::get('/test-pack', function () {
     
-    $alert = alert::message('My first alert')->send();
+    $alert = (new alert('My first alert'))->message();
     
-    dd($alert);
+    //dd($alert);
 
 });
