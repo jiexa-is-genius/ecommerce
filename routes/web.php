@@ -21,8 +21,8 @@ Route::get('/', function () {
 
 Route::get('/test-pack', function () {
     
-    $pack = ui::t('My first lib');
+    $alert = alert::message('My first alert');
     
-    dd($pack);
+    dd($alert);
 
 });
