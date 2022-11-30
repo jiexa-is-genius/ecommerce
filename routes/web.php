@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redis;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $redis = new Predis\Client();// put setting here, if req);
-    $redis->publish(['general'], json_encode(['Hello' => 'World']));
+   // $redis = new Redis;// put setting here, if req);
+    Redis::publish('general', json_encode(['Hello' => 'World']));
 
     return view('welcome');
 });
