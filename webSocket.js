@@ -30,10 +30,14 @@ redisSub.subscribe('csub', (message) => {
   });
 
 io.on('connection', (socket) => {
-  console.log(socket.id);
   redisPub.publish('ssub', JSON.stringify({
-      'event' : 'connection'
+    'event': 'connection',
+    'client': socket.id,
   }));
+
+  io.on('connected', (req) => {
+    console.log(req);
+  });
 });
 
 server.listen(3000, () => {

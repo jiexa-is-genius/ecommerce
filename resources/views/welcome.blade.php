@@ -9,6 +9,21 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io('http://localhost:3000', { transports: ['websocket', 'polling', 'flashsocket'] });
+        
+        const myHeaders = new Headers();
+        console.log(myHeaders);
+        var request = new XMLHttpRequest ();
+        request.open ('GET', document.location, false);
+        request.send (null);
+
+        socket.on('connect', () => {
+            
+            socket.emit('connected', {
+                'event': 'connected',
+                'headers': request.getAllResponseHeaders().toLowerCase(),
+            });
+
+        });
     </script>
 </head>
 <body>
