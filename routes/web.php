@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $redis = new Predis\Client();// put setting here, if req);
+    $redis->publish('general', json_encode(['Hello' => 'World']));
+
     return view('welcome');
 });
