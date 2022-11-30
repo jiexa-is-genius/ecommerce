@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Redis;
 */
 
 Route::get('/', function () {
-   // $redis = new Redis;// put setting here, if req);
-    Redis::publish('general', json_encode(['Hello' => 'World']));
+    Redis::publish('csub', json_encode([
+        'event' => 'chat.message',
+        'to' => [1, 2, 3],
+        'body' => ['MyBody' => 'Hello World'],
+    ]));
+});
+
+Route::get('/send', function () {
+   
 
     return view('welcome');
 });
