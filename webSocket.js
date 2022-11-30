@@ -9,7 +9,6 @@ const redis = require('redis');
 const redisClient = redis.createClient();
 const redisSub = redisClient.duplicate();
 const redisPub = redisClient.duplicate();
-
 redisSub.connect()
 redisPub.connect()
   
@@ -19,33 +18,38 @@ app.get('/', (req, res) => {
 });
 */
 
-redisSub.subscribe('csub', (message) => {
-  console.log(message); // 'message'
-
-  //io.to(socketid).emit('message', 'for your eyes only');
-});
-
 io.on('connection', (socket) => {
   
-  redisPub.publish('ssub', JSON.stringify({
-    'event': 'connection',
-    'client': socket.id,
-  }));
+    redisSub.subscribe('csub', (message) => {
+        var request = JSON.parse(message)
+        var event = (typeof request.event != 'undefined') ? request.event : null;
+        var to = (typeof request.to != 'undefined') ? request.to : null;
+        var body = (typeof request.body != 'undefined') ? request.body : null;
 
-  socket.on('conn', (req) => {
-    req.client = socket.id,
-    redisPub.publish('ssub', JSON.stringify(req));
-  });
+        if (event != null && body != null) { 
+            if (to != null) { to.forEach((clientId) => { socket.to(clientId).emit(event, body); }) }
+        }
+    });
 
-  socket.on("disconnect", (req) => { 
     redisPub.publish('ssub', JSON.stringify({
-      'event': 'disconnect',
-      'client': socket.id,
-    }));  
-  });
+        'event': 'connection',
+        'client': socket.id,
+    }));
+
+    socket.on('conn', (req) => {
+        req.client = socket.id,
+        redisPub.publish('ssub', JSON.stringify(req));
+    });
+
+    socket.on("disconnect", (req) => { 
+        redisPub.publish('ssub', JSON.stringify({
+            'event': 'disconnect',
+            'client': socket.id,
+        }));  
+    });
 
 });
 
 server.listen(3000, () => {
-  console.log('WebSocket server runned on *:3000');
+    console.log('WebSocket server runned on *:3000');
 });

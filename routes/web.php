@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Redis;
 |
 */
 
-Route::get('/', function () {
+Route::get('/send', function () {
     Redis::publish('csub', json_encode([
         'event' => 'chat.message',
-        'to' => [1, 2, 3],
+        'to' => ['TQL51NOZaGd-7sT6AAAD'],
         'body' => ['MyBody' => 'Hello World'],
     ]));
 });
 
-Route::get('/send', function () {
+Route::get('/', function () {
    
 
     return view('welcome');
