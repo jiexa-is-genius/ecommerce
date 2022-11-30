@@ -27,16 +27,15 @@ io.on('connection', (socket) => {
         var body = (typeof request.body != 'undefined') ? request.body : null;
 
         if (event != null && body != null) { 
-            if (to != null) { to.forEach((clientId) => { socket.to(clientId).emit(event, body); }) }
+            if (to != null) {
+                to.forEach((clientId) => { socket.to(clientId).emit(event, body); })
+            } else { 
+                socket.emit(event, body);
+            }
         }
     });
 
-    redisPub.publish('ssub', JSON.stringify({
-        'event': 'connection',
-        'client': socket.id,
-    }));
-
-    socket.on('conn', (req) => {
+    socket.on('call', (req) => {
         req.client = socket.id,
         redisPub.publish('ssub', JSON.stringify(req));
     });

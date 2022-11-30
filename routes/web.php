@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Redis;
 Route::get('/send', function () {
     Redis::publish('csub', json_encode([
         'event' => 'chat.message',
-        'to' => ['TQL51NOZaGd-7sT6AAAD'],
+       // 'to' => ['TQL51NOZaGd-7sT6AAAD'],
         'body' => ['MyBody' => 'Hello World'],
     ]));
 });
