@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
     'client': socket.id,
   }));
 
-  io.on('connected', (req) => {
+  io.on('conn', (req) => {
     console.log(req);
   });
 });
