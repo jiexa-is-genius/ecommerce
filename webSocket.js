@@ -12,12 +12,6 @@ const redisPub = redisClient.duplicate();
 
 redisSub.connect()
 redisPub.connect()
-
-const article = {
-    id: '123456',
-    name: 'Using Redis Pub/Sub with Node.js',
-    blog: 'Logrocket Blog',
-};
   
 /*
 app.get('/', (req, res) => {
@@ -26,20 +20,32 @@ app.get('/', (req, res) => {
 */
 
 redisSub.subscribe('csub', (message) => {
-    console.log(message); // 'message'
-  });
+  console.log(message); // 'message'
+
+  //io.to(socketid).emit('message', 'for your eyes only');
+});
 
 io.on('connection', (socket) => {
+  
   redisPub.publish('ssub', JSON.stringify({
     'event': 'connection',
     'client': socket.id,
   }));
 
-  io.on('conn', (req) => {
-    console.log(req);
+  socket.on('conn', (req) => {
+    req.client = socket.id,
+    redisPub.publish('ssub', JSON.stringify(req));
   });
+
+  socket.on("disconnect", (req) => { 
+    redisPub.publish('ssub', JSON.stringify({
+      'event': 'disconnect',
+      'client': socket.id,
+    }));  
+  });
+
 });
 
 server.listen(3000, () => {
-  console.log('listening on *:3000');
+  console.log('WebSocket server runned on *:3000');
 });

