@@ -14,7 +14,7 @@ class socketSubscribe extends Command {
 
     public function handle() {
 
-        
+        echo('[' . date('Y-m-d H:i:s') . '] SocketSubscribe listener runned!' . PHP_EOL);
 
         //general is the name of channel to subscribe to
         Redis::subscribe(['ssub'], function ($socketData) {
