@@ -9,7 +9,10 @@
             </main>
         </div>
         <div class="page-separator-bottom">
-            Footer
+            <footer>
+                @include('v1.layouts.blocks.subFooter')
+                @include('v1.layouts.blocks.footer')
+            </footer>
         </div>
     </div>
 @endsection
