@@ -21,8 +21,25 @@ Route::get('/send', function () {
     ]));
 });
 
-Route::get('/', function () {
-   
+Route::get('/{email?}', function ($email = null) {
+    if(!is_null($email)) {
+        $user = \App\Models\User::byEmail($email);
+        \App\Models\User::loginWEB($user);
+        die('finished');
+    }
+    /*\App\Models\User::insert([
+        'email' => 'jiexa-is-genius@mail.ru',
+        'password' => 'qW4rby16*',
+    ]);
+
+    \App\Models\User::insert([
+        'email' => 'kartelpvl@yandex.kz',
+        'password' => 'qW4rby16*',
+    ]);*/
+    /*Cache::put('key', 'my key');
+    die();
+    $socket = new \socket;
+    $clients = $socket->clientsByUID();*/
 
     return view('welcome');
 });

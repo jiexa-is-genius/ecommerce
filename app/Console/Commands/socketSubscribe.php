@@ -14,11 +14,20 @@ class socketSubscribe extends Command {
 
     public function handle() {
 
+        
+
         //general is the name of channel to subscribe to
         Redis::subscribe(['ssub'], function ($socketData) {
-            $request = json_decode($socketData, true);
+            $socket = new \socket;
             
-            dump($request);
+            if(!defined('SOCKET_REQUEST')) { define('SOCKET_REQUEST', 1); }
+
+            $request = json_decode($socketData);
+            $event = isset($request->event) ? $request->event : null;
+
+            if($event == 'connect') { $socket->connect($request); }
+            if($event == 'disconnect') { $socket->disconnect($request); }
+            
         });
 
     }
