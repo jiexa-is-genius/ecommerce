@@ -21,12 +21,12 @@ Route::get('/send', function () {
     ]));
 });
 
-Route::get('/{email?}', function ($email = null) {
-    if(!is_null($email)) {
+Route::get('/', function ($email = null) {
+    /*if(!is_null($email)) {
         $user = \App\Models\User::byEmail($email);
         \App\Models\User::loginWEB($user);
         die('finished');
-    }
+    }*/
     /*\App\Models\User::insert([
         'email' => 'jiexa-is-genius@mail.ru',
         'password' => 'qW4rby16*',
