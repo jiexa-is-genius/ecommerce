@@ -1,0 +1,1139 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Документация по API",
+        "description": "Документация по API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "Авторизация на сайте",
+                "operationId": "9fc5538f51eccda1568b9221ffa5e756",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "E-mail",
+                        "required": true,
+                        "schema": {
+                            "type": "email"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Пароль",
+                        "required": true,
+                        "schema": {
+                            "type": "password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный результат выполнения",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserLoginSuccess"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ошибки заполнения формы"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BookmarksResource": {
+                "description": "Список избранных вакансий",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список вакансий",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "CourseResource": {
+                "title": "CourseResource",
+                "description": "Course Resource",
+                "properties": {
+                    "course": {
+                        "title": "Course",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Course"
+                }
+            },
+            "DictClPouTypeResource": {
+                "title": "DictClPouTypeResource",
+                "description": "Dict DictClPouType Resource",
+                "properties": {
+                    "dictClPouTypeResource": {
+                        "title": "DictClPouTypeResource",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictClPouTypeResource"
+                }
+            },
+            "DictClStatePrgPrjResource": {
+                "title": "DictClStatePrgPrjResource",
+                "description": "Dict ClStatePrgPrj Resource",
+                "properties": {
+                    "dictClStatePrgPrjResource": {
+                        "title": "DictClStatePrgPrjResource",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictClStatePrgPrjResource"
+                }
+            },
+            "DictClczResource": {
+                "description": "Список городов",
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "code": {
+                            "description": "Код города/района",
+                            "type": "string",
+                            "example": "05100"
+                        },
+                        "name": {
+                            "description": "Наименование города/района",
+                            "type": "string",
+                            "example": "Семей"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "DictClokedUozResource": {
+                "title": "DictClokedUozResource",
+                "description": "Dict ClokedUoz Resource",
+                "properties": {
+                    "dictClokedUoz": {
+                        "title": "DictClokedUoz",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictClokedUozResource"
+                }
+            },
+            "DictClstranResource": {
+                "description": "Список государств",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список государств",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/clstran?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/clstran?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/clstran?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/clstran"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/clstran?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "DictCompetComResource": {
+                "title": "DictCompetComResource",
+                "description": "Dict CompetCom Resource",
+                "properties": {
+                    "dictCompetCom": {
+                        "title": "DictCompetCom",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictCompetComResource"
+                }
+            },
+            "DictCompetSpecResource": {
+                "description": "Список специальных навыков",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список навыков",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "DictDqualificationResource": {
+                "description": "Список квалификаций",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список квалификаций",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "DictDspecialityResource": {
+                "description": "Список специальностей",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список специальностей",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "DictImportDepResource": {
+                "title": "DictImportDepResource",
+                "description": "Dict ImportDep Resource",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список специальностей",
+                        "type": "array",
+                        "items": {}
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictImportDepResource"
+                }
+            },
+            "DictProfoblResource": {
+                "title": "DictProfoblResource",
+                "description": "Dict Profobl Resource",
+                "properties": {
+                    "dictProfobl": {
+                        "title": "DictProfobl",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictProfoblResource"
+                }
+            },
+            "DictSprprfUozResource": {
+                "description": "Список профессий",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "Список профессий"
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "url первой страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "номер записи, с которой начинается текущая страница",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "last_page",
+                        "description": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 4
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "url последней страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=4"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "url следуюшей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "Текущей адрес",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "Количество записей на странице",
+                        "type": "integer",
+                        "example": 20
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "url предыдущей страницы",
+                        "type": "string",
+                        "example": "https://btest.enbek.kz/ru/api/v3/cabinet/professions?page=1"
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "Номер последней записи на текущей странице",
+                        "type": "integer",
+                        "example": 40
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "Общее количество записей",
+                        "type": "integer",
+                        "example": 46
+                    }
+                },
+                "type": "object"
+            },
+            "DictTotalResource": {
+                "title": "DictTotalResource",
+                "description": "Dict Total Resource",
+                "properties": {
+                    "dictTotal": {
+                        "title": "DictTotal",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "DictTotalResource"
+                }
+            },
+            "EmployerResource": {
+                "title": "EmployerResource",
+                "description": "Employer Resource",
+                "properties": {
+                    "employer": {
+                        "title": "Employer",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "EmployerResource"
+                }
+            },
+            "InvitationResource": {
+                "title": "InvitationResource",
+                "description": "Invitation Resource",
+                "properties": {
+                    "invitation": {
+                        "title": "Invation",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InvitationResource"
+                }
+            },
+            "InvitationResponseResource": {
+                "title": "InvitationResponseResource",
+                "description": "InvitationResponse Resource",
+                "properties": {
+                    "invitationResponse": {
+                        "title": "InvationResponse",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InvitationResponseResource"
+                }
+            },
+            "PersonResource": {
+                "title": "PersonResource",
+                "description": "Resume Resource",
+                "properties": {
+                    "person": {
+                        "title": "Person",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Resume Resource"
+                }
+            },
+            "ResponseResource": {
+                "title": "ResponseResource",
+                "description": "Response Resource",
+                "properties": {
+                    "response": {
+                        "title": "Response",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResponseResource"
+                }
+            },
+            "ResumeCertificateResource": {
+                "title": "ResumeCertificateResource",
+                "description": "ResumeCertificate Resource",
+                "properties": {
+                    "resumeCertificate": {
+                        "title": "ResumeCertificate",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeCertificate"
+                }
+            },
+            "ResumeCompetComResource": {
+                "title": "ResumeCompetComResource",
+                "description": "ResumeCompetCom Resource",
+                "properties": {
+                    "resumeCompetCom": {
+                        "title": "ResumeCompetCom",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeCompetComResource"
+                }
+            },
+            "ResumeCompetSpecResource": {
+                "title": "ResumeCompetSpecResource",
+                "description": "ResumeCompetSpec Resource",
+                "properties": {
+                    "resumeCompetSpec": {
+                        "title": "ResumeCompetSpec",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeCompetSpecResource"
+                }
+            },
+            "ResumeDrivingLicenseResource": {
+                "title": "ResumeDrivingLicenseResource",
+                "description": "ResumeDrivingLicense Resource",
+                "properties": {
+                    "resumeDrivingLicense": {
+                        "title": "ResumeDrivingLicense",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeDrivingLicenseResource"
+                }
+            },
+            "ResumeEducationResource": {
+                "title": "ResumeEducationResource",
+                "description": "ResumeEducation Resource",
+                "properties": {
+                    "resumeEducation": {
+                        "title": "ResumeEducation",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeEducationResource"
+                }
+            },
+            "ResumeExperienceResource": {
+                "title": "ResumeExperienceResource",
+                "description": "ResumeExperience Resource",
+                "properties": {
+                    "resumeExperience": {
+                        "title": "ResumeExperience",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeExperienceResource"
+                }
+            },
+            "ResumeLangsResource": {
+                "title": "ResumeLangsResource",
+                "description": "ResumeLangs Resource",
+                "properties": {
+                    "resumeLangs": {
+                        "title": "ResumeLangs",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeLangsResource"
+                }
+            },
+            "ResumeListResource": {
+                "title": "ResumeListResource",
+                "description": "ResumeList Resource",
+                "properties": {
+                    "resumeList": {
+                        "title": "ResumeList",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeListResource"
+                }
+            },
+            "ResumeResource": {
+                "title": "ResumeResource",
+                "description": "Resume Resource",
+                "properties": {
+                    "resume": {
+                        "title": "Resume",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Resume Resource"
+                }
+            },
+            "ResumeSkillsResource": {
+                "title": "ResumeSkillsResource",
+                "description": "ResumeSkills Resource",
+                "properties": {
+                    "resumeSkills": {
+                        "title": "Employer",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ResumeSkills Resource"
+                }
+            },
+            "ServicesList": {
+                "properties": {
+                    "services": {
+                        "title": "services"
+                    }
+                },
+                "type": "object"
+            },
+            "SubscribeResource": {
+                "title": "SubscribeResource",
+                "description": "Subscribe Resource",
+                "properties": {
+                    "subscribe": {
+                        "title": "Subscribe",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Subscribe Resource"
+                }
+            },
+            "VacanciesListResource": {
+                "title": "VacanciesListResource",
+                "description": "VacanciesList Resource",
+                "properties": {
+                    "VacanciesList": {
+                        "title": "VacanciesList",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacanciesListResource"
+                }
+            },
+            "VacancyBonusesResource": {
+                "title": "VacancyBonusesResource",
+                "description": "VacancyBonuses Resource",
+                "properties": {
+                    "vacancyBonuses": {
+                        "title": "VacancyBonuses",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyBonusesResource"
+                }
+            },
+            "VacancyCompetComResource": {
+                "title": "VacancyCompetComResource",
+                "description": "VacancyCompetCom Resource",
+                "properties": {
+                    "vacancyCompetCom": {
+                        "title": "VacancyCompetCom",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyCompetComResource"
+                }
+            },
+            "VacancyCompetSpecResource": {
+                "title": "VacancyCompetSpecResource",
+                "description": "VacancyCompetSpec Resource",
+                "properties": {
+                    "vacancyCompetSpec": {
+                        "title": "VacancyCompetSpec",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyCompetSpecResource"
+                }
+            },
+            "VacancyDrivingLicenseResource": {
+                "title": "VacancyDrivingLicenseResource",
+                "description": "VacancyDrivingLicense Resource",
+                "properties": {
+                    "vacancyDrivingLicense": {
+                        "title": "VacancyDrivingLicense",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyDrivingLicenseResource"
+                }
+            },
+            "VacancyFacetResource": {
+                "title": "VacancyMainResource",
+                "description": "VacancyMain Resource",
+                "properties": {
+                    "vacancyMain": {
+                        "title": "VacancyMain",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyMainResource"
+                }
+            },
+            "VacancyLangsResource": {
+                "title": "VacancyLangsResource",
+                "description": "VacancyLangs Resource",
+                "properties": {
+                    "vacancyLangsResource": {
+                        "title": "VacancyLangs",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VacancyLangsResource"
+                }
+            },
+            "VacancyResource": {
+                "title": "VacancyResource",
+                "description": "Vacancy Resource",
+                "properties": {
+                    "vacancy": {
+                        "title": "Vacancy",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Vacancy Resource"
+                }
+            },
+            "UserLoginSuccess": {
+                "properties": {
+                    "uid": {
+                        "description": "Уникальный идентификатор пользователя",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
