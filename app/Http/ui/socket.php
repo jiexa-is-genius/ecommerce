@@ -2,7 +2,7 @@
 
 class socket {
 
-    protected $events = [];
+    public $events = [];
     /*protected $redis = null;
     
     function __construct($event = null) {
@@ -50,8 +50,13 @@ class socket {
         return 1;
     }
 
-    public function event($alias, $controller, $method) {
+    public function user($request) {
+        $uid = $this->socketUID($request);
+        return \App\Models\User::get($uid);
+    } 
 
+    public function event($event, $controller, $method) {
+        $this->events[$event] = ['c' => $controller, 'm' => $method];
     } 
 
 }

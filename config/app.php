@@ -209,6 +209,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'ui' => App\Http\ui\ui::class,
         'socket' => App\Http\ui\socket::class,
     ])->toArray(),
 

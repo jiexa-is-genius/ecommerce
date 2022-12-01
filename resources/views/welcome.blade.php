@@ -30,7 +30,7 @@
         socket.on('connect', () => { socket.call('connect'); });
         
         
-        socket.call('tests.socket');
+        socket.call('tests.socket', {'bodyParams' : ['param 1', 'param 2']});
     </script>
 </head>
 <body>

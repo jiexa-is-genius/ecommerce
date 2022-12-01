@@ -16,20 +16,22 @@ class socketSubscribe extends Command {
 
         echo('[' . date('Y-m-d H:i:s') . '] SocketSubscribe listener runned!' . PHP_EOL);
 
-        //general is the name of channel to subscribe to
-        Redis::subscribe(['ssub'], function ($socketData) {
-            $socket = new \socket;
-            
-            if(!defined('SOCKET_REQUEST')) { define('SOCKET_REQUEST', 1); }
-
+        $socket = new \socket;
+        require_once(base_path('routes/socket.php'));
+        
+        Redis::subscribe(['ssub'], function ($socketData) use($socket) {
             $request = json_decode($socketData);
             $event = isset($request->event) ? $request->event : null;
+            $body = isset($request->body) ? \ui::objectToArray($request->body) : null;
 
             if($event == 'connect') { $socket->connect($request); }
             if($event == 'disconnect') { $socket->disconnect($request); }
             
-            require_once(base_path('routes/socket.php'));
-            
+            if(isset($socket->events[$event]['c']) and isset($socket->events[$event]['m'])) {
+                $c = new $socket->events[$event]['c']($socket->user($request), $body);
+                $c->{$socket->events[$event]['m']}();
+            }
+
         });
 
     }
