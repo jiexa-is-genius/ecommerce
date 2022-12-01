@@ -28,7 +28,9 @@
         }
         
         socket.on('connect', () => { socket.call('connect'); });
-        //socket.on('chat.message', (req) => { console.log(req); });
+        
+        
+        socket.call('tests.socket');
     </script>
 </head>
 <body>

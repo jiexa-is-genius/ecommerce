@@ -28,6 +28,8 @@ class socketSubscribe extends Command {
             if($event == 'connect') { $socket->connect($request); }
             if($event == 'disconnect') { $socket->disconnect($request); }
             
+            require_once(base_path('routes/socket.php'));
+            
         });
 
     }

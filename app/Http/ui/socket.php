@@ -2,6 +2,7 @@
 
 class socket {
 
+    protected $events = [];
     /*protected $redis = null;
     
     function __construct($event = null) {
