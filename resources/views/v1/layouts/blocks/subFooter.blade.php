@@ -34,11 +34,9 @@
                             <h5>{{ ui::t('Категории') }}</h5>
                             <nav>
                                 <ul>
-                                    <li><a href="/">Example 1</a></li>
-                                    <li><a href="/">Example 1</a></li>
-                                    <li><a href="/">Example 1</a></li>
-                                    <li><a href="/">Example 1</a></li>
-                                    <li><a href="/">Example 1</a></li>
+                                    @foreach(\App\Models\Categories::get(['take' => 5]) as $category)
+                                    <li><a href="/category/{{ $category->id }}">{{ $category->caption }}</a></li>
+                                    @endforeach
                                 </ul>
                             </nav>
                         </div>

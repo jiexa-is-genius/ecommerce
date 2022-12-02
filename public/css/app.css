@@ -74,6 +74,25 @@ h1, h2, h3, h4, h5 {
     border: 1px solid #e3e3e3;
 }
 
+.left-sidebar-menu ul {
+    padding: 0;
+    margin: 0;
+}
+.left-sidebar-menu ul li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.left-sidebar-menu ul li a { 
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    transition: .3s ease;
+    font-weight: bold;
+}
+.left-sidebar-menu ul li a:hover, .left-sidebar-menu ul li a:active { color: #d01418; }
+
 /* Footer */
 .footer-box { 
     background-color: #000000;

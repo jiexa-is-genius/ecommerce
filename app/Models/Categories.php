@@ -5,8 +5,13 @@ use ui;
 
 class Categories
 {
-    public static function get() {
-        return DB::table('cl_categories')
-            ->get();
+    public static function get($options = []) {
+        $DB = DB::table('cl_categories')
+            ->orderBy('weight')
+            ->orderBy('caption');
+
+        if(isset($options['take'])) { $DB->take($options['take']); }
+        
+        return $DB->get();
     }
 }
