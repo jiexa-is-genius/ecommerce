@@ -1,5 +1,10 @@
 html, body { height: 100%; background-color: #f5f5f7; font-family: 'Inter'; font-size: 14px; }
 .toast-container-notifications .toast-body { background-color: #fff; }
+@media only screen and (min-width: 1830px) {
+    .container {
+        max-width: 1800px;
+    }
+}
 
 h1, h2, h3, h4, h5 {
     font-family: 'Montserrat Alternates';
@@ -10,6 +15,49 @@ h1, h2, h3, h4, h5 {
 .page-separator-top, .page-separator-bottom { display: table-row; }
 .page-separator-bottom { height: 1px; }
 
+/* Header */
+.bg-header { background: #202020; color: #fff; }
+.header-box { border-bottom: 1px solid #414141; padding: 20px 0; }
+.header-buttons-box,
+.header-logo-box {
+    display: flex;
+    align-items: center;
+}
+.header-buttons-box { justify-content: right; } 
+
+.seach-form-field-container { display: table; width: 100%; border-radius: 4px; overflow: hidden; }
+.seach-form-field-box, .seach-form-button-box { display: table-cell; vertical-align: top; }
+.seach-form-button-box { width: 1px; }
+
+.seach-form-field-box input {
+    width: 100%;    
+    height: 48px;   
+    padding: 8px 15px;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+.seach-form-button-box button {
+    transition: .3s all ease;
+    background-color: #d01418;
+    color: #fff;
+    padding: 0 50px;
+    margin: 0;
+    border: none;
+    height: 48px;
+    transition: .3s all ease;
+}
+.seach-form-button-box button:hover { background-color: #000000; }
+.header-btn-box { display: inline-block; cursor: pointer; margin-left: 30px; }
+.header-btn-box svg { 
+    fill: #fff; 
+    width: 32px;
+    height: 32px;
+}
+.header-btn-cart svg { width: 38px; }
+.header-btn-sub-title { font-size: 12px; color: #9f9f9f; }
+
+/* Footer */
 .footer-box { 
     background-color: #000000;
     padding: 12px 0;
@@ -42,7 +90,7 @@ h1, h2, h3, h4, h5 {
 .sub-footer-box .rborder:last-child { border-right: none; }
 .sub-footer-box .sub-footer-pl { padding-left: 30px; }
 
-.sub-footer-box h1, .sub-footer-box h2, .sub-footer-box h3, .sub-footer-box h4, .sub-footer-box h5 { color: #f5f5f7; }
+.sub-footer-box h5 { color: #f5f5f7; margin-bottom: 20px; }
 .payment-method img { margin-left: 5px; }
 
 .sub-footer-box ul { margin: 0; padding: 0; }
@@ -52,3 +100,15 @@ h1, h2, h3, h4, h5 {
     list-style: none;
 }
 .sub-footer-box ul li a { font-weight: bold; }
+
+.footer-moblie-box { 
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    color: #c8c8c8;
+}
+.footer-moblie-box a { display: block; padding: 15px 0; }
+.footer-moblie-box a svg { stroke: #fff !important; }
+
