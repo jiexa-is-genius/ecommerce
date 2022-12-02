@@ -68,6 +68,12 @@ h1, h2, h3, h4, h5 {
     border-radius: 4px 4px 0 0;
 }
 
+/* Content */
+.left-sidebar-menu {
+    border-radius: 4px;
+    border: 1px solid #e3e3e3;
+}
+
 /* Footer */
 .footer-box { 
     background-color: #000000;

@@ -1,6 +1,6 @@
-@extends('v1.layouts.body')
+@extends('v1.layouts.pageColl.sidebarLeft')
 
-@section('body')
+@section('content')
 <div class="container">
     О нас
 </div>  
