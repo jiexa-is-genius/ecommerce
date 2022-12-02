@@ -3,11 +3,11 @@
 @section('html')
     <div class="page-separator">
         <div class="page-separator-top">
-            <header>
+            <header class="mb-4">
                 @include('v1.layouts.blocks.header')
                 @include('v1.layouts.blocks.mainMenu')
             </header>
-            <main>
+            <main class="mb-5">
                 @yield('body')
             </main>
         </div>

@@ -57,6 +57,17 @@ h1, h2, h3, h4, h5 {
 .header-btn-cart svg { width: 38px; }
 .header-btn-sub-title { font-size: 12px; color: #9f9f9f; }
 
+/* Main menu */
+.header-sidebar-title {
+    height: 50px;
+    background-color: #d01418;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 14px 12px;
+    font-weight: bold;
+    border-radius: 4px 4px 0 0;
+}
+
 /* Footer */
 .footer-box { 
     background-color: #000000;
