@@ -1,3 +1,7 @@
+const config = {
+    socket: { port: 3000 }
+}
+
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -5,7 +9,6 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const redis = require('redis');
-
 const redisClient = redis.createClient();
 const redisSub = redisClient.duplicate();
 const redisPub = redisClient.duplicate();
@@ -49,6 +52,6 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(3000, () => {
-    console.log('WebSocket server runned on *:3000');
+server.listen(config.socket.port, () => {
+    console.log('WebSocket server runned on *:' + config.socket.port);
 });

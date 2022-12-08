@@ -34,6 +34,33 @@
     <meta name="robots" content="noindex">
     @endif
     
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:3000', { transports: ['websocket', 'polling', 'flashsocket'] });
+        
+        var request = new XMLHttpRequest ();
+        request.open ('GET', document.location, false);
+        request.send(null);
+
+        socket.passport = {
+            'headers': request.getAllResponseHeaders().toLowerCase(),
+            'cookies': document.cookie,
+        }
+        
+        socket.call = function($event, $request) {
+            var request = socket.passport;
+            if(typeof $request != 'undefined') { request.body = $request; }
+            request.event = $event;
+            //console.log($request);
+            socket.emit('call', request);
+        }
+        
+        socket.on('connect', () => { socket.call('connect'); });
+        
+        
+        socket.call('tests.socket', {'bodyParams' : ['param 1', 'param 2']});
+    </script>
+
 </head>
 <body>
     @yield('html')

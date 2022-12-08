@@ -7,7 +7,13 @@
                 @include('v1.layouts.blocks.sidebarTitle')
             </div>
             <div class="col-xl-10 col-md-8 ">
-                Menu content
+                <nav>
+                    <ul>
+                        @foreach(Config::get('menuMain') as $item)
+                        <li><a href="{{ $item['href'] }}">{{ $item['caption'] }}</a></li>
+                        @endforeach
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

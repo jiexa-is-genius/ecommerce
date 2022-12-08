@@ -1,0 +1,22 @@
+[
+    {
+        "uid": "webSocket",
+        "append": true,
+        "watch": true,
+        "script": "webSocket.js",
+        "sourceDir": "D:/github/my.ecommerce.com",
+        "logFile": "D:/github/logs/forever.log",
+        "outFile": "D:/github/logs/out.log",
+        "errFile": "D:/github/logs/error.log"
+    },
+    {
+        "uid": "laravalSocketListener",
+        "append": true,
+        "watch": true,
+        "script": "forever -c php artisan socketSubscribe",
+        "sourceDir": "D:/github/my.ecommerce.com",
+        "logFile": "D:/github/logs/forever.log",
+        "outFile": "D:/github/logs/out.log",
+        "errFile": "D:/github/logs/error.log"
+    }
+]
