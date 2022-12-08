@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5 {
     text-decoration: none;
 }
 
-.header-btn-box, .header-btn-box svg{ transition: .3s ease; }
+.header-btn-box .main-title, .header-btn-box a, .header-btn-box svg{ transition: .3s ease; }
 
 .header-btn-box:hover,
 .header-btn-box:hover a {
